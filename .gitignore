@@ -1,5 +1,26 @@
+# Node.js
 node_modules/
+*.log
+npm-debug.log
+yarn-error.log
+
+# Expo/React Native
+.expo/
+dist/
+*.apk
+*.ipa
+*.aab
+
+# Environment
 .env
-*.md
-/dist
-**/*/dist
+*.env.*
+
+# Build outputs
+budget-tracker-app/dist/
+packages/BE/dist/
+packages/common/dist/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
