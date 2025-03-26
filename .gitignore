@@ -3,6 +3,7 @@ node_modules/
 *.log
 npm-debug.log
 yarn-error.log
+*.md
 
 # Expo/React Native
 .expo/
