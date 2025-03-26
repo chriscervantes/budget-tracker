@@ -1,0 +1,11 @@
+-- AlterTable
+ALTER TABLE "Expense" ALTER COLUMN "deletedAt" DROP NOT NULL,
+ALTER COLUMN "updatedAt" DROP NOT NULL;
+
+-- AlterTable
+ALTER TABLE "MonthlyExpense" ALTER COLUMN "deletedAt" DROP NOT NULL,
+ALTER COLUMN "updatedAt" DROP NOT NULL;
+
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "updatedAt" DROP NOT NULL,
+ALTER COLUMN "deletedAt" DROP NOT NULL;
