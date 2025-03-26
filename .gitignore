@@ -3,7 +3,8 @@ node_modules/
 *.log
 npm-debug.log
 yarn-error.log
-*.md
+packages/backend/*.md
+
 
 # Expo/React Native
 .expo/
@@ -18,7 +19,7 @@ dist/
 
 # Build outputs
 budget-tracker-app/dist/
-packages/BE/dist/
+packages/backend/dist/
 packages/common/dist/
 
 # IDE files
