@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
-import { expenseSchema } from "@budget-tracker/common";
-import { z } from "zod";
+import { PrismaClient } from '../generated/prisma-client';
+import { expenseSchema } from '@budget-tracker/common';
+import { z } from 'zod';
 
 const prisma = new PrismaClient();
 
@@ -18,7 +18,7 @@ export const createExpense = async (data: z.infer<typeof expenseSchema>) => {
 
 export const updateExpense = async (
   id: string,
-  data: Partial<z.infer<typeof expenseSchema>>
+  data: Partial<z.infer<typeof expenseSchema>>,
 ) => {
   return prisma.expense.update({
     where: { id },

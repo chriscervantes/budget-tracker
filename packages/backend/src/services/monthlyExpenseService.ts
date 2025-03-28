@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../generated/prisma-client';
 import { monthlyExpenseSchema } from '@budget-tracker/common';
 import { z } from 'zod';
 

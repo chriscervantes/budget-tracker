@@ -1,9 +1,10 @@
-import express from "express";
-import rateLimit from "express-rate-limit";
-import path from "path";
-import { auth } from "express-oauth2-jwt-bearer";
-import dotenv from "dotenv";
-import routes from "./routes";
+import express from 'express';
+import rateLimit from 'express-rate-limit';
+import path from 'path';
+import { auth } from 'express-oauth2-jwt-bearer';
+import dotenv from 'dotenv';
+import routes from './routes';
+import { errorHandler } from './middleware/error-handling';
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ const app = express();
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
-  message: "Too many requests from this IP, please try again later.",
+  message: 'Too many requests from this IP, please try again later.',
 });
 
 // const checkJwt = auth({
@@ -23,20 +24,21 @@ const limiter = rateLimit({
 
 app.use(limiter);
 app.use(express.json());
+app.use(errorHandler);
 
 app.use(
-  "/static",
-  express.static(path.join(__dirname, "../public"), {
-    dotfiles: "deny",
+  '/static',
+  express.static(path.join(__dirname, '../public'), {
+    dotfiles: 'deny',
     index: false,
     redirect: false,
-  })
+  }),
 );
-app.use("/static/*", (req: express.Request, res: express.Response) => {
-  res.status(403).send("Access denied");
+app.use('/static/*', (req: express.Request, res: express.Response) => {
+  res.status(403).send('Access denied');
 });
 
 // app.use("/api", checkJwt, routes);
-app.use("/api", routes);
+app.use('/api', routes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -3,17 +3,15 @@ import expenseRoutes from './expenseRoutes';
 import monthlyExpenseRoutes from './monthlyExpenseRoutes';
 import { syncUser } from '../middleware/syncUser';
 import { userSchema } from '@budget-tracker/common';
+// Optional: Keep local registration for testing (remove in production)
+import { PrismaClient } from '../generated/prisma-client';
+import bcrypt from 'bcrypt';
 
 const router = Router();
 
 // router.use(syncUser); // Apply user sync to all routes
 router.use(expenseRoutes);
 router.use(monthlyExpenseRoutes);
-
-// Optional: Keep local registration for testing (remove in production)
-import { PrismaClient } from '@prisma/client';
-import { z } from 'zod';
-import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
